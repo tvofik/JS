@@ -321,3 +321,109 @@ var fullJapan = arrayCalc(ages, isFullAge.bind(this, 20));
 console.log(ages);
 console.log(fullJapan);
 */
+
+
+// Coding Challenge
+/*
+
+var Question = function (question, options, correct) {
+  this.question = question;
+  this.options = options;
+  this.correct = correct;
+}
+
+Question.prototype.display = function () {
+  console.log(this.question);
+
+  for (let i = 0; i < this.options.length; i++) {
+    console.log(`${[i]}: ${this.options[i]}`);
+  }
+  var response = parseInt(prompt(`Select an answer from the list below?`));
+
+  if (response === this.correct){
+    console.log(`You got it buddy.`);
+  } else {
+    console.log(`Wrong. play again?`);
+  }
+}
+
+var qu1 = new Question('What are we doing today?', ['Nothing', 'Sleeping', 'Dancing'], 1);
+var qu2 = new Question('What is Abayomi\'s first programming language? ', ['Javascript', 'C++', 'Python'], 0);
+var qu3 = new Question('What is Abayomi\'s favorite Nigerian food? ', ['Amala', 'Eba', 'Pounded yam'], 2);
+
+var questions = [qu1, qu2, qu3];
+var n = Math.round( Math.random() * questions.length );
+
+questions[n].display();
+
+
+(function () {
+  var Question = function (question, options, correct) {
+    this.question = question;
+    this.options = options;
+    this.correct = correct;
+  };
+
+  Question.prototype.display = function () {
+    console.log(this.question);
+
+    for (let i = 0; i < this.options.length; i++) {
+      console.log(`${[i]}: ${this.options[i]}`);
+    }
+  };
+
+  Question.prototype.checkAnswer = function (response, callback) {
+    var count;
+    if (response === this.correct) {
+      console.log(`You got it buddy.`);
+      count = callback(true);
+    } else {
+      console.log(`Wrong. play again?`);
+      count = callback(false);
+    }
+    this.displayScore(count);
+  };
+
+  Question.prototype.displayScore = function (score){
+    console.log('Your current score is: ' + score);
+    console.log('-------------------------------');
+  }
+
+  var qu1 = new Question('What are we doing today?', ['Nothing', 'Sleeping', 'Dancing'], 1);
+  var qu2 = new Question('What is Abayomi\'s first programming language? ', ['Javascript', 'C++', 'Python'], 0);
+  var qu3 = new Question('What is Abayomi\'s favorite Nigerian food? ', ['Amala', 'Eba', 'Pounded yam'], 2);
+  
+  var questions = [qu1, qu2, qu3];
+
+  function score() {
+    var count = 0;
+    return function (correct){
+      if (correct) {
+        count++;
+      }
+      return count;
+    }
+  }
+
+  var keepScore = score();
+
+  function nextQuestion() {
+
+    var n = Math.round(Math.random() * questions.length);
+
+    questions[n].display();
+
+    var response = prompt(`Select an answer from the list below?`);
+
+    if (response !== 'exit') {
+
+      questions[n].checkAnswer(parseInt(response), keepScore);
+      nextQuestion();
+    }
+  };
+
+  nextQuestion();
+
+})();
+
+*/
